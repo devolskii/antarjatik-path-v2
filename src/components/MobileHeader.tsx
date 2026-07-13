@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
@@ -36,6 +35,8 @@ interface HeaderProps {
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const iconButtonClass =
+    "rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
   return (
     <div>
       <div className="h-23 w-full flex justify-between items-center px-2 bg-[#DB261D]">
@@ -56,21 +57,21 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
             onClick={() => setShowSearch(!showSearch)}
             aria-expanded={showSearch}
             aria-label={showSearch ? "Hide search" : "Show search"}
+            className={iconButtonClass}
           >
             <Search className="stroke-[4px] size-8" />
           </Button>
           <Drawer swipeDirection="right">
-            <DrawerTrigger>
-              <Button
+            <DrawerTrigger render={<Button
                 variant="ghost"
                 onClick={() => setShowMenu(!showMenu)}
                 aria-expanded={showMenu}
                 aria-label={showMenu ? "Hide Menu" : "Show Menu"}
+                className={iconButtonClass}
               >
                 <Menu className="stroke-[4px] size-8" />
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="bg-[#DB261D] text-white border-none font-serif">
+              </Button>}/>
+            <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none">
               <DrawerHeader className="mb-8">
                 <DrawerTitle className="sr-only">আন্তর্জাতিক পথ</DrawerTitle>
                 <DrawerDescription className="sr-only">

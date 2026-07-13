@@ -45,6 +45,7 @@ export default async function YearPage({
 }) {
   const { name, posts } = await client.fetch(CARD_QUERY, await params);
   //   console.log(await posts);
+const { projectId, dataset } = client.config();
 
   return (
     <>
@@ -67,6 +68,8 @@ export default async function YearPage({
                   mainImage={card.mainImage}
                   topic={card.topic}
                   slug={card.slug}
+                  projectId={projectId ?? ""}
+                  dataset={dataset ?? ""}
                 />
               </li>
             ))}

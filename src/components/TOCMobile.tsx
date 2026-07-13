@@ -35,14 +35,14 @@ const TOCMobile = ({ headings }: { headings: TOCType[] }) => {
   }, [headings]);
 
   return (
-    <DropdownMenuContent className="w-56 font-serif" align="start">
+    <DropdownMenuContent className="w-56 rounded-none font-serif" align="start">
       <DropdownMenuGroup>
         <DropdownMenuLabel className="text-xl">সূচি</DropdownMenuLabel>
         {headings.map(({ title, link }) => (
-          <DropdownMenuItem key={link}>
+          <DropdownMenuItem key={link} className="rounded-none">
             <a
               href={`#${link}`}
-              className={` ${
+              className={`${
                 activeId === link ? "font-bold" : ""
               } hover:underline`}
             >

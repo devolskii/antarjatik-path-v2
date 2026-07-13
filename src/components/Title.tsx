@@ -6,6 +6,7 @@ import { TOCType } from "@/sanity/types";
 import TOCMobile from "./TOCMobile";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function Title({
   title,
@@ -80,10 +81,8 @@ export default function Title({
         {headings?.length ? (
           <div>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button>
+              <DropdownMenuTrigger render={<Button variant="ghost" className="rounded-none bg-transparent hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white"/>}>
                   <List className="mt-1 size-6 stroke-3" />
-                </button>
               </DropdownMenuTrigger>
               <TOCMobile headings={headings} />
             </DropdownMenu>

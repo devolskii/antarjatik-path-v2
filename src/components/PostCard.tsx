@@ -69,7 +69,7 @@ const PostCard = ({
           </div>
         </CardContent>
         <CardFooter>
-          <p className="text-[#DB261D] font-serif">{date}</p>
+          <p className="text-[#DB261D] font-bold font-serif">{date}</p>
           {/*<ul className="flex flex-wrap">
             {topic?.map((eachTopic: Topic) => (
               <li key={eachTopic._id}>
