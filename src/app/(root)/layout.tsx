@@ -3,6 +3,7 @@ import Footer from "../../components/Footer";
 import HeaderWrapper from "../../components/HeaderWrapper";
 import ScrollToTop from "../../components/ScrollToTop";
 import { ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Layout({children}: {children: ReactNode}){
   return (
@@ -12,6 +13,7 @@ export default function Layout({children}: {children: ReactNode}){
       <div className="flex-1">{children}</div>
       <ScrollToTopButton/>
       <Footer />
+      <SpeedInsights/>
     </main>
   );
 }
