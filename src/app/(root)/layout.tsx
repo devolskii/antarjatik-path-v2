@@ -1,3 +1,4 @@
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Footer from "../../components/Footer";
 import HeaderWrapper from "../../components/HeaderWrapper";
 import ScrollToTop from "../../components/ScrollToTop";
@@ -9,6 +10,7 @@ export default function Layout({children}: {children: ReactNode}){
       <ScrollToTop />
       <HeaderWrapper />
       <div className="flex-1">{children}</div>
+      <ScrollToTopButton/>
       <Footer />
     </main>
   );

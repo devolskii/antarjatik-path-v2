@@ -55,7 +55,7 @@ const home = async () => {
       <RecentPosts />
       <ul>
         {postCards.map((card: CardType) => (
-          <li key={card._id} className="mx-auto hover:shadow-xl block">
+          <li key={card._id} className="mx-auto block">
             <PostCard
               title={card.title}
               description={card.description}

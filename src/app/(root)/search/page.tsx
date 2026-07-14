@@ -54,7 +54,7 @@ export default async function SearchPage({
         {postCards.length ? (
           <ul>
             {postCards.map((card: CardType) => (
-              <li key={card._id} className="mx-auto my-4 hover:shadow-xl block">
+              <li key={card._id} className="mx-auto my-4 block">
                 <PostCard
                   title={card.title}
                   description={card.description}

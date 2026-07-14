@@ -51,7 +51,7 @@ const { projectId, dataset } = client.config();
       <div className="fade-in">
         <ul>
           {posts.map((card: CardType) => (
-            <li key={card._id} className="mx-auto my-4 hover:shadow-xl block">
+            <li key={card._id} className="mx-auto my-4 block">
               <PostCard
                 title={card.title}
                 description={card.description}

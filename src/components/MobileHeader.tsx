@@ -33,6 +33,7 @@ interface HeaderProps {
 }
 
 const MobileHeader = ({ tags, years }: HeaderProps) => {
+  const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const iconButtonClass =
@@ -61,10 +62,15 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
           >
             <Search className="stroke-[4px] size-8" />
           </Button>
-          <Drawer swipeDirection="right">
+          {/* Drawer for menu */}
+          <Drawer 
+                open={open}
+      onOpenChange={setOpen}
+      showSwipeHandle={true}
+      swipeDirection="right"
+          >
             <DrawerTrigger render={<Button
                 variant="ghost"
-                onClick={() => setShowMenu(!showMenu)}
                 aria-expanded={showMenu}
                 aria-label={showMenu ? "Hide Menu" : "Show Menu"}
                 className={iconButtonClass}
