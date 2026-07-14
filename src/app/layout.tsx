@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Noto_Sans_Bengali, Noto_Serif_Bengali, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { SpeedInsights } from "@vercel/speed-insights/nuxt/runtime";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -39,6 +40,7 @@ export default function RootLayout({
           className={`${bengaliSans.variable} ${bengaliSerif.variable} antialiased`}
         >
           {children}
+          <SpeedInsights/>
         </body>
       </html>
       <Analytics />
