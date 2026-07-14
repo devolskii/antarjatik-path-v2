@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Noto_Sans_Bengali, Noto_Serif_Bengali, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { SpeedInsights } from "@vercel/speed-insights/nuxt/runtime";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
