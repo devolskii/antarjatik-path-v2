@@ -5,8 +5,7 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
-import { ChevronsUpDown, Search } from "lucide-react";
-import { Menu } from "lucide-react";
+import { ChevronsUpDown, Search, Menu, Languages } from "lucide-react";
 
 import { useState } from "react";
 import {
@@ -37,32 +36,35 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const iconButtonClass =
-    "rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
+    "p-0 rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
   return (
     <div>
-      <div className="h-23 w-full flex justify-between items-center px-2 bg-[#DB261D]">
-        <div className="">
+      <div className="h-15 w-full flex items-center justify-between px-1 bg-[#DB261D]">
+        <div className="flex-1">
           <Link href="/">
             <Image
               src="/mobile_header.jpeg"
               alt="BLPI Logo Header"
-              width={280}
-              height={75}
+              width={383}
+              height={60}
             />
           </Link>
         </div>
 
-        <div className="grow text-white flex justify-around">
+        <div className="text-white flex justify-end items-center gap-1 m-1">
+          <div className="">
           <Button
             variant="ghost"
             onClick={() => setShowSearch(!showSearch)}
             aria-expanded={showSearch}
             aria-label={showSearch ? "Hide search" : "Show search"}
             className={iconButtonClass}
-          >
-            <Search className="stroke-[4px] size-8" />
+            >
+            <Search className="stroke-[3px] size-6 p-0" />
           </Button>
-          {/* Drawer for menu */}
+          </div>
+        
+          <div>
           <Drawer 
                 open={open}
       onOpenChange={setOpen}
@@ -75,7 +77,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                 aria-label={showMenu ? "Hide Menu" : "Show Menu"}
                 className={iconButtonClass}
               >
-                <Menu className="stroke-[4px] size-8" />
+                <Menu className="stroke-[3px] size-6" />
               </Button>}/>
             <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none">
               <DrawerHeader className="mb-8">
@@ -134,9 +136,9 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
               </Collapsible>
               <h2 className="font-bold ml-4 mt-4">বই/পত্রিকা PDF</h2>
               <h2 className="font-bold ml-4 mt-4">আমাদের সম্পর্কে</h2>
-              <h2 className="font-bold ml-4 mt-4">English</h2>
             </DrawerContent>
           </Drawer>
+          </div>
         </div>
       </div>
       <div

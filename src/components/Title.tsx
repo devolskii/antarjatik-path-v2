@@ -55,7 +55,7 @@ export default function Title({
           href="/"
           aria-hidden={!sticky}
           className={`transition-all duration-300 ease-out shrink-0 ${
-            sticky ? "opacity-100 w-6.25" : "opacity-0 w-0 overflow-hidden"
+            sticky ? "opacity-100 w-6.25 mb-1 ml-1" : "opacity-0 w-0 overflow-hidden"
           }`}
         >
           <Image

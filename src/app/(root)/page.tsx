@@ -5,7 +5,7 @@ import Hero from "../../components/Hero";
 import RecentPosts from "../../components/RecentPosts";
 import PostCard from "../../components/PostCard";
 
-const HOME_QUERY = `*[_type == "post"]
+const HOME_QUERY = `*[_type == "post" && _id != (*[_type == "hero"][0].heroPost->._id)]
   |order(date desc){
     _id, 
     title, 

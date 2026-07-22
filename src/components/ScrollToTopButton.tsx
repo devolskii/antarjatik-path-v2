@@ -13,7 +13,7 @@ export default function ScrollToTopButton() {
       <Button
         type="button"
         onClick={handleClick}
-        className="z-100 mr-4 bg-[#DB261D]"
+        className="z-100 mr-4 bg-[#DB261D] rounded-none"
         aria-label="Scroll to top"
       >
         <ArrowUpToLine className="text-white" />
