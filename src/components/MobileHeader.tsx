@@ -53,91 +53,109 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
 
         <div className="text-white flex justify-end items-center gap-1 m-1">
           <div className="">
-          <Button
-            variant="ghost"
-            onClick={() => setShowSearch(!showSearch)}
-            aria-expanded={showSearch}
-            aria-label={showSearch ? "Hide search" : "Show search"}
-            className={iconButtonClass}
+            <Button
+              variant="ghost"
+              onClick={() => setShowSearch(!showSearch)}
+              aria-expanded={showSearch}
+              aria-label={showSearch ? "Hide search" : "Show search"}
+              className={iconButtonClass}
             >
-            <Search className="stroke-[3px] size-6 p-0" />
-          </Button>
+              <Search className="stroke-[3px] size-6 p-0" />
+            </Button>
           </div>
-        
+
           <div>
-          <Drawer 
-                open={open}
-      onOpenChange={setOpen}
-      showSwipeHandle={true}
-      swipeDirection="right"
-          >
-            <DrawerTrigger render={<Button
-                variant="ghost"
-                aria-expanded={showMenu}
-                aria-label={showMenu ? "Hide Menu" : "Show Menu"}
-                className={iconButtonClass}
-              >
-                <Menu className="stroke-[3px] size-6" />
-              </Button>}/>
-            <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none">
-              <DrawerHeader className="mb-8">
-                <DrawerTitle className="sr-only">আন্তর্জাতিক পথ</DrawerTitle>
-                <DrawerDescription className="sr-only">
-                  বলশেভিক লেনিনবাদী পার্টির মুখপত্র
-                </DrawerDescription>
-                <Link href="/">
-                  <Image
-                    src="/mobile_header.jpeg"
-                    alt="BLPI Logo Header"
-                    width={280}
-                    height={75}
-                  />
-                </Link>
-              </DrawerHeader>
-              <Collapsible>
-                <div className="flex items-center justify-between gap-4 px-4">
-                  <h2 className="font-bold">বিষয়</h2>
-                  <CollapsibleTrigger>
-                    <Button variant="ghost" size="icon" className="size-8">
-                      <ChevronsUpDown />
-                    </Button>
-                  </CollapsibleTrigger>
-                </div>
-                <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
-                  {tags.map((tag) => (
-                    <Button variant="link" key={tag._id} className="text-white">
-                      <Link href={`/tag/${tag.slug?.current}`}>{tag.name}</Link>
-                    </Button>
-                  ))}
-                </CollapsibleContent>
-              </Collapsible>
-              <Collapsible>
-                <div className="flex items-center justify-between gap-4 px-4 mt-4">
-                  <h2 className="font-bold">বছর অনুযায়ী</h2>
-                  <CollapsibleTrigger>
-                    <Button variant="ghost" size="icon" className="size-8">
-                      <ChevronsUpDown />
-                    </Button>
-                  </CollapsibleTrigger>
-                </div>
-                <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
-                  {years.map((year) => (
-                    <Button
-                      variant="link"
-                      key={year._id}
-                      className="text-white"
-                    >
-                      <Link href={`/year/${year.slug?.current}`}>
-                        {year.name}
+            <Drawer
+              open={open}
+              onOpenChange={setOpen}
+              showSwipeHandle={true}
+              swipeDirection="right"
+            >
+              <DrawerTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    aria-expanded={showMenu}
+                    aria-label={showMenu ? "Hide Menu" : "Show Menu"}
+                    className={iconButtonClass}
+                  >
+                    <Menu className="stroke-[3px] size-6" />
+                  </Button>
+                }
+              />
+              <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none">
+                <DrawerHeader className="mb-8 pl-0 ml-0">
+                  <DrawerTitle className="sr-only">আন্তর্জাতিক পথ</DrawerTitle>
+                  <DrawerDescription className="sr-only">
+                    বলশেভিক লেনিনবাদী পার্টির মুখপত্র
+                  </DrawerDescription>
+                  <div className="ml-0 pl-0.1 pr-0.1 flex rounded-none contain-content ">
+                    <Button className="bg-transparent rounded-none ml-0 h-full w-full">
+                      <Link href="/">
+                        <Image
+                          src="/drawer_image.jpeg"
+                          alt="BLPI Logo Drawer"
+                          width={280}
+                          height={75}
+                        />
                       </Link>
                     </Button>
-                  ))}
-                </CollapsibleContent>
-              </Collapsible>
-              <h2 className="font-bold ml-4 mt-4">বই/পত্রিকা PDF</h2>
-              <h2 className="font-bold ml-4 mt-4">আমাদের সম্পর্কে</h2>
-            </DrawerContent>
-          </Drawer>
+                  </div>
+                </DrawerHeader>
+                <Collapsible>
+                  <div className="flex items-center justify-between gap-4 px-4">
+                    <h2 className="font-bold">বিষয়</h2>
+                    <CollapsibleTrigger
+                      render={
+                        <Button variant="ghost" size="icon" className="size-8">
+                          <ChevronsUpDown />
+                        </Button>
+                      }
+                    />
+                  </div>
+                  <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
+                    {tags.map((tag) => (
+                      <Button
+                        variant="link"
+                        key={tag._id}
+                        className="text-white"
+                      >
+                        <Link href={`/tag/${tag.slug?.current}`}>
+                          {tag.name}
+                        </Link>
+                      </Button>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
+                <Collapsible>
+                  <div className="flex items-center justify-between gap-4 px-4 mt-4">
+                    <h2 className="font-bold">বছর অনুযায়ী</h2>
+                    <CollapsibleTrigger
+                      render={
+                        <Button variant="ghost" size="icon" className="size-8">
+                          <ChevronsUpDown />
+                        </Button>
+                      }
+                    />
+                  </div>
+                  <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
+                    {years.map((year) => (
+                      <Button
+                        variant="link"
+                        key={year._id}
+                        className="text-white"
+                      >
+                        <Link href={`/year/${year.slug?.current}`}>
+                          {year.name}
+                        </Link>
+                      </Button>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
+                <h2 className="font-bold ml-4 mt-4">বই/পত্রিকা PDF</h2>
+                <h2 className="font-bold ml-4 mt-4">আমাদের সম্পর্কে</h2>
+              </DrawerContent>
+            </Drawer>
           </div>
         </div>
       </div>
