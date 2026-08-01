@@ -5,7 +5,7 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
-import { ChevronsUpDown, Search, Menu, Languages } from "lucide-react";
+import { ChevronsUpDown, Menu, Languages } from "lucide-react";
 
 import { useState } from "react";
 import {
@@ -33,51 +33,28 @@ interface HeaderProps {
 
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   const [open, setOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showSearch, setShowSearch] = useState(false);
   const iconButtonClass =
     "p-0 rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
   return (
     <div>
-      <div className="h-15 w-full flex items-center justify-between px-1 bg-[#DB261D]">
-        <div className="flex-1">
-          <Link href="/">
-            <Image
-              src="/mobile_header.jpeg"
-              alt="BLPI Logo Header"
-              width={383}
-              height={60}
-            />
-          </Link>
-        </div>
-
-        <div className="text-white flex justify-end items-center gap-1 m-1">
-          <div className="">
-            <Button
-              variant="ghost"
-              onClick={() => setShowSearch(!showSearch)}
-              aria-expanded={showSearch}
-              aria-label={showSearch ? "Hide search" : "Show search"}
-              className={iconButtonClass}
-            >
-              <Search className="stroke-[3px] size-6 p-0" />
-            </Button>
-          </div>
-
+      <div className="h-15 w-full flex items-center justify-end p-2 bg-[#DB261D]">
+        <div className="w-[5%]">
           <div>
             <Drawer
               open={open}
               onOpenChange={setOpen}
               showSwipeHandle={true}
-              swipeDirection="right"
+              swipeDirection="left"
             >
               <DrawerTrigger
                 render={
                   <Button
                     variant="ghost"
-                    aria-expanded={showMenu}
-                    aria-label={showMenu ? "Hide Menu" : "Show Menu"}
+                    aria-expanded={open}
+                    aria-label={open ? "Hide Menu" : "Show Menu"}
                     className={iconButtonClass}
+                    onClick={() => setOpen(!open)}
                   >
                     <Menu className="stroke-[3px] size-6" />
                   </Button>
@@ -102,6 +79,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                     </Button>
                   </div>
                 </DrawerHeader>
+                <SearchBar mobile={true} />
                 <Collapsible>
                   <div className="flex items-center justify-between gap-4 px-4">
                     <h2 className="font-bold">বিষয়</h2>
@@ -158,18 +136,17 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
             </Drawer>
           </div>
         </div>
-      </div>
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-out ${
-          showSearch ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div
-          className={`transform transition-all duration-300 ease-out ${
-            showSearch ? "translate-y-0" : "-translate-y-2"
-          }`}
-        >
-          <SearchBar mobile={true} />
+        <div className="w-[95%]">
+          <Button className="bg-transparent rounded-none ml-0 h-full w-full">
+            <Link href="/">
+              <Image
+                src="/mobile_banner.png"
+                alt="BLPI Logo Header"
+                width={430}
+                height={56}
+              />
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
