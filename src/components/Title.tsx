@@ -47,15 +47,17 @@ export default function Title({
         id="sticky-header"
         className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${
           sticky
-            ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white"
+            ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white xl:hidden"
             : "h-auto w90 mx-auto bg-white text-[#DB261D]"
         }`}
       >
         <Link
           href="/"
           aria-hidden={!sticky}
-          className={`transition-all duration-300 ease-out shrink-0 ${
-            sticky ? "opacity-100 w-6.25 mb-1 ml-1" : "opacity-0 w-0 overflow-hidden"
+          className={`xl:hidden transition-all duration-300 ease-out shrink-0 ${
+            sticky
+              ? "opacity-100 w-6.25 mb-1 ml-1"
+              : "opacity-0 w-0 overflow-hidden"
           }`}
         >
           <Image
@@ -79,10 +81,17 @@ export default function Title({
           </h1>
         </div>
         {headings?.length ? (
-          <div>
+          <div className="xl:hidden">
             <DropdownMenu>
-              <DropdownMenuTrigger render={<Button variant="ghost" className="rounded-none bg-transparent hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white"/>}>
-                  <List className="mt-1 size-6 stroke-3" />
+              <DropdownMenuTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    className="rounded-none bg-transparent hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white"
+                  />
+                }
+              >
+                <List className="mt-1 size-6 stroke-3" />
               </DropdownMenuTrigger>
               <TOCMobile headings={headings} />
             </DropdownMenu>
