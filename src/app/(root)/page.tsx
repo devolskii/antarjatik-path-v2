@@ -40,11 +40,11 @@ const RECENT_POSTS_QUERY = `*[_type == "recents"][0].recentPosts[]->{
 
 const home = async () => {
   const postCards = await client.fetch<SanityDocument>(HOME_QUERY);
-  console.log(postCards);
+  //console.log(postCards);
   const hero = await client.fetch<SanityDocument>(HERO_QUERY);
   //console.log("here's hero", hero);
   const recentPosts = await client.fetch<CardType[]>(RECENT_POSTS_QUERY);
-  console.log("here's recentPosts", recentPosts);
+  //console.log("here's recentPosts", recentPosts);
 
   const { projectId, dataset } = client.config(); //HERE
   return (

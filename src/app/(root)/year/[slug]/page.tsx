@@ -66,7 +66,6 @@ export default async function YearPage({
                     year: "numeric",
                   })}
                   mainImage={card.mainImage}
-                  topic={card.topic}
                   slug={card.slug}
                   projectId={projectId ?? ""}
                   dataset={dataset ?? ""}
