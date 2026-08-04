@@ -1,4 +1,7 @@
-import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
+import {
+  createImageUrlBuilder,
+  type SanityImageSource,
+} from "@sanity/image-url";
 import { MainImage, Slug } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +13,7 @@ const Hero = ({
   mainImage,
   slug,
   projectId,
-  dataset
+  dataset,
 }: {
   title: string;
   description: string;
@@ -27,27 +30,26 @@ const Hero = ({
       : null;
 
   const imageUrl = mainImage
-    ? urlFor(mainImage)?.height(310).width(550).quality(80).auto("format").url() ?? "https://placehold.co/550x310/png"
+    ? (urlFor(mainImage)
+        ?.height(310)
+        .width(550)
+        .quality(80)
+        .auto("format")
+        .url() ?? "https://placehold.co/550x310/png")
     : "https://placehold.co/550x310/png";
   // console.log("Image: ", imageUrl);
   return (
     <>
       <div className="pt-3">
         <Link href={`/posts/${slug.current}`} className="cursor-pointer">
-          <Image
-            src={imageUrl}
-            alt={title}
-            className="w-full"
-            height="200"
-            width="350"
-          />
+          <Image src={imageUrl} alt={title} height="310" width="550" />
         </Link>
       </div>
       <Link
         href={`/posts/${slug.current}`}
         className="text-[#DB261D] cursor-pointer"
       >
-        <div className="w90 px-3 text-3xl font-extrabold  py-3 font-serif">
+        <div className="w90 text-3xl font-extrabold  py-3 font-serif">
           <h1>{title}</h1>
         </div>
       </Link>

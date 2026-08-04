@@ -36,9 +36,9 @@ export default async function SearchPage({
   const { projectId, dataset } = client.config(); //HERE
 
   return (
-    <div className="fade-in">
+    <div className="fade-in w90 mx-auto">
       <div className="mt-6">
-        <div className="w90 mx-auto flex justify-between">
+        <div className="flex justify-between">
           <div>
             <h1 className="font-semibold font-sans">
               "{query}" অনুসন্ধানের ফলাফল
@@ -63,7 +63,6 @@ export default async function SearchPage({
                     year: "numeric",
                   })}
                   mainImage={card.mainImage}
-                  topic={card.topic}
                   slug={card.slug}
                   projectId={projectId ?? ""}
                   dataset={dataset ?? ""}

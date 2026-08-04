@@ -24,7 +24,7 @@ const TAG_QUERY = defineQuery(`
 `);
 
 const TITLE_QUERY = defineQuery(
-  `*[_type == "tag" && slug.current == $slug][0]{name}`
+  `*[_type == "tag" && slug.current == $slug][0]{name}`,
 );
 
 export async function generateMetadata({
@@ -43,32 +43,29 @@ export default async function TagPage({
 }) {
   const { name, posts } = await client.fetch(TAG_QUERY, await params);
   //   console.log(await posts);
-const { projectId, dataset } = client.config();
+  const { projectId, dataset } = client.config();
   return (
-    <>
+    <div className="fade-in w90 mx-auto">
       <Title title={name} />
       <hr className="mb-4" />
-      <div className="fade-in">
-        <ul>
-          {posts.map((card: CardType) => (
-            <li key={card._id} className="mx-auto my-4 block">
-              <PostCard
-                title={card.title}
-                description={card.description}
-                date={new Date(card.date).toLocaleDateString("bn-in", {
-                  month: "long",
-                  year: "numeric",
-                })}
-                mainImage={card.mainImage}
-                topic={card.topic}
-                slug={card.slug}
-                projectId={projectId ?? ""}
-                dataset={dataset ?? ""}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      <ul>
+        {posts.map((card: CardType) => (
+          <li key={card._id} className="mx-auto my-4 block">
+            <PostCard
+              title={card.title}
+              description={card.description}
+              date={new Date(card.date).toLocaleDateString("bn-in", {
+                month: "long",
+                year: "numeric",
+              })}
+              mainImage={card.mainImage}
+              slug={card.slug}
+              projectId={projectId ?? ""}
+              dataset={dataset ?? ""}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

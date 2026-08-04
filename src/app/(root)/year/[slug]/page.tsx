@@ -22,11 +22,11 @@ const CARD_QUERY = defineQuery(
     }
   }
 }
-  `
+  `,
 );
 
 const TITLE_QUERY = defineQuery(
-  `*[_type == "year" && slug.current == $slug][0]{name}`
+  `*[_type == "year" && slug.current == $slug][0]{name}`,
 );
 
 export async function generateMetadata({
@@ -45,13 +45,13 @@ export default async function YearPage({
 }) {
   const { name, posts } = await client.fetch(CARD_QUERY, await params);
   //   console.log(await posts);
-const { projectId, dataset } = client.config();
+  const { projectId, dataset } = client.config();
 
   return (
     <>
       <Title title={name} />
       <hr className="mb-4" />
-      <div className="fade-in">
+      <div className="fade-in w90 mx-auto">
         {!posts ? (
           <h2>{name} বছরের কোনো লেখা নেই </h2>
         ) : (

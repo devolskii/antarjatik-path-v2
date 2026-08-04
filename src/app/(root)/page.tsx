@@ -2,24 +2,21 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import { CardType } from "@/sanity/types";
 import Hero from "../../components/Hero";
-import RecentPosts from "../../components/RecentPosts";
+import SectionTitle from "../../components/SectionTitle";
 import PostCard from "../../components/PostCard";
 
-const HOME_QUERY = `*[_type == "post" && _id != (*[_type == "hero"][0].heroPost->._id)]
-  |order(date desc){
-    _id, 
-    title, 
-    slug, 
-    description, 
-    date, 
-    mainImage, 
-    topic[]->{
-      _id,
-      name,
-      slug
-    }
-  }
-    `;
+const HOME_QUERY = `*[
+  _type == "post"
+  && _id != (*[_type == "hero"][0].heroPost->._id)
+  && !(_id in *[_type == "recents"][0].recentPosts[]->._id)
+] | order(date desc) {
+  _id,
+  title,
+  slug,
+  description,
+  date,
+  mainImage,
+}`;
 
 const HERO_QUERY = `*[_type == "hero"][0]{
   ...heroPost -> {
@@ -32,14 +29,26 @@ const HERO_QUERY = `*[_type == "hero"][0]{
 }
 `;
 
+const RECENT_POSTS_QUERY = `*[_type == "recents"][0].recentPosts[]->{
+  _id,
+  title,
+  slug,
+  description,
+  date,
+  mainImage
+}`;
+
 const home = async () => {
   const postCards = await client.fetch<SanityDocument>(HOME_QUERY);
-  // console.log(postCards);
+  console.log(postCards);
   const hero = await client.fetch<SanityDocument>(HERO_QUERY);
   //console.log("here's hero", hero);
+  const recentPosts = await client.fetch<CardType[]>(RECENT_POSTS_QUERY);
+  console.log("here's recentPosts", recentPosts);
+
   const { projectId, dataset } = client.config(); //HERE
   return (
-    <div className="fade-in ">
+    <div className="fade-in w90 mx-auto">
       <Hero
         title={hero.title}
         description={hero.description}
@@ -52,7 +61,26 @@ const home = async () => {
         projectId={projectId ?? ""}
         dataset={dataset ?? ""}
       />
-      <RecentPosts />
+      <SectionTitle text="নতুন আপলোড..." />
+      <ul>
+        {recentPosts.map((card: CardType) => (
+          <li key={card._id} className="mx-auto block">
+            <PostCard
+              title={card.title}
+              description={card.description}
+              date={new Date(card.date).toLocaleDateString("bn-in", {
+                month: "long",
+                year: "numeric",
+              })}
+              mainImage={card.mainImage}
+              slug={card.slug}
+              projectId={projectId ?? ""}
+              dataset={dataset ?? ""}
+            />
+          </li>
+        ))}
+      </ul>
+      <SectionTitle text="আরও লেখা..." />
       <ul>
         {postCards.map((card: CardType) => (
           <li key={card._id} className="mx-auto block">
@@ -64,7 +92,6 @@ const home = async () => {
                 year: "numeric",
               })}
               mainImage={card.mainImage}
-              topic={card.topic}
               slug={card.slug}
               projectId={projectId ?? ""}
               dataset={dataset ?? ""}

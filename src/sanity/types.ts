@@ -186,7 +186,6 @@ export type CardType = {
   description: string;
   date: string;
   mainImage: MainImage;
-  topic: Topic[];
 };
 
 export type Topic = {
