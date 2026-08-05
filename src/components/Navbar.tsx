@@ -30,7 +30,7 @@ const Navbar = ({ tags, years }: NavbarProps) => {
     <div>
       <Menubar className="bg-[#DB261D] rounded-none flex justify-evenly text-white">
         <MenubarMenu>
-          <MenubarTrigger className="rounded-none text-lg hover:text-black w-md flex justify-center">
+          <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black w-md flex justify-center">
             বিষয়
           </MenubarTrigger>
           <MenubarContent className="rounded-none bg-[#DB261D] text-white">
@@ -58,7 +58,7 @@ const Navbar = ({ tags, years }: NavbarProps) => {
         </MenubarMenu>
         <Separator orientation="vertical" />
         <MenubarMenu>
-          <MenubarTrigger className="rounded-none text-lg hover:text-black w-lg flex justify-center">
+          <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black w-lg flex justify-center">
             বই/পত্রিকা PDF
           </MenubarTrigger>
         </MenubarMenu>
@@ -68,13 +68,13 @@ const Navbar = ({ tags, years }: NavbarProps) => {
         </MenubarMenu>
         <Separator orientation="vertical" />
         <MenubarMenu>
-          <MenubarTrigger className="rounded-none text-lg hover:text-black w-md flex justify-center">
+          <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black w-md flex justify-center">
             আমাদের সম্পর্কে
           </MenubarTrigger>
         </MenubarMenu>
         <Separator orientation="vertical" />
         <MenubarMenu>
-          <MenubarTrigger className="rounded-none text-lg hover:text-black w-md flex justify-center">
+          <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black w-md flex justify-center">
             English
           </MenubarTrigger>
         </MenubarMenu>
