@@ -28,7 +28,7 @@ interface NavbarProps {
 const Navbar = ({ tags, years }: NavbarProps) => {
   return (
     <div>
-      <Menubar className="bg-[#DB261D] rounded-none flex justify-evenly text-white">
+      <Menubar className="w90 mx-auto bg-[#DB261D] rounded-none flex justify-evenly text-white">
         <MenubarMenu>
           <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black w-md flex justify-center">
             বিষয়

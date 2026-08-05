@@ -50,31 +50,35 @@ const PostCard = ({
   return (
     <div>
       <Card className="bg-transparent font-sans shadow-none rounded-none border-none px-0 ring-0">
-        <CardHeader className="px-0">
-          <Link href={`/posts/${slug.current}`}>
-            <CardTitle className="text-[#DB261D] font-serif text-2xl font-bold">
-              {title}
-            </CardTitle>
-          </Link>
-        </CardHeader>
-        <CardContent className="px-0">
-          <div className="flex gap-3">
-            <div className="hidden md:block md:w-4/5 font-serif">
-              <p>{description}</p>
-            </div>
-            <div className="">
-              <Image
-                src={imageUrl}
-                alt={title}
-                className="mx-auto aspect-video overflow-hidden object-cover object-center"
-                height="310"
-                width="550"
-              />
-            </div>
+        <CardHeader className="px-0"></CardHeader>
+        <CardContent className="px-0 flex flex-col md:flex-row gap-2">
+          <div className="w-4/5 flex flex-col gap-3">
+            <Link href={`/posts/${slug.current}`}>
+              <CardTitle className="text-[#DB261D] font-serif text-2xl md:text-4xl font-bold">
+                {title}
+              </CardTitle>
+            </Link>
+            <p className="hidden md:block text-[1.10rem] font-serif">
+              {description}
+            </p>
+            <p className="hidden text-[#DB261D] font-bold font-serif md:block md:text-[1rem]">
+              {date}
+            </p>
+          </div>
+          <div className="">
+            <Image
+              src={imageUrl}
+              alt={title}
+              className="mx-auto aspect-video overflow-hidden object-cover object-center"
+              height="310"
+              width="550"
+            />
           </div>
         </CardContent>
-        <CardFooter>
-          <p className="text-[#DB261D] font-bold font-serif">{date}</p>
+        <CardFooter className="px-0">
+          <p className=" text-[#DB261D] font-bold font-serif md:hidden">
+            {date}
+          </p>
           {/*<ul className="flex flex-wrap">
             {topic?.map((eachTopic: Topic) => (
               <li key={eachTopic._id}>

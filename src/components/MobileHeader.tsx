@@ -82,8 +82,8 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                 <div className="w-full pl-2 mb-4">
                   <SearchBar mobile={true} onSearch={() => setOpen(false)} />
                 </div>
-                <div className="h-full">
-                  <ScrollArea className="h-full w-full">
+                <ScrollArea className="h-full w-full">
+                  <div className="h-full">
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4">
                         <h2 className="font-bold font-sans">বিষয়</h2>
@@ -153,8 +153,8 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                       আমাদের সম্পর্কে
                     </h2>
                     <h2 className="font-bold font-sans ml-4 mt-4">English</h2>
-                  </ScrollArea>
-                </div>
+                  </div>
+                </ScrollArea>
               </DrawerContent>
             </Drawer>
           </div>
