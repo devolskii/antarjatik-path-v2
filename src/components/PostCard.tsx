@@ -49,7 +49,7 @@ const PostCard = ({
 
   return (
     <div>
-      <Card className="bg-transparent font-sans shadow-none rounded-none border-none px-0">
+      <Card className="bg-transparent font-sans shadow-none rounded-none border-none px-0 ring-0">
         <CardHeader className="px-0">
           <Link href={`/posts/${slug.current}`}>
             <CardTitle className="text-[#DB261D] font-serif text-2xl font-bold">
