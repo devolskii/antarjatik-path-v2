@@ -82,14 +82,14 @@ const DesktopHeader = ({
                     </MenubarSubTrigger>
                     <MenubarSubContent className="rounded-none bg-[#DB261D] text-white">
                       {years.map((year) => (
-                        <MenubarItem key={year._id} className="rounded-none">
-                          <Link
-                            href={`/year/${year.slug.current}`}
-                            className="font-sans"
-                          >
+                        <Link
+                          href={`/year/${year.slug.current}`}
+                          className="font-sans"
+                        >
+                          <MenubarItem key={year._id} className="rounded-none">
                             {year.name}
-                          </Link>
-                        </MenubarItem>
+                          </MenubarItem>
+                        </Link>
                       ))}
                     </MenubarSubContent>
                   </MenubarSub>
@@ -115,15 +115,15 @@ const DesktopHeader = ({
               </MenubarMenu>
               <Separator orientation="vertical" />
               <MenubarMenu>
-                <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black flex justify-center px-2">
-                  <Link
-                    href={lang === "English" ? "/en" : "/"}
-                    className="flex items-center gap-2 justify-center"
-                  >
+                <Link
+                  href={lang === "English" ? "/en" : "/"}
+                  className="flex items-center gap-2 justify-center"
+                >
+                  <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black flex justify-center px-2">
                     <Languages size={16} />
                     {lang}
-                  </Link>
-                </MenubarTrigger>
+                  </MenubarTrigger>
+                </Link>
               </MenubarMenu>
             </Menubar>
           </div>

@@ -165,7 +165,11 @@ const MobileHeader = ({
                     <h2 className="font-bold font-sans ml-4 mt-4">
                       {about_us}
                     </h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4">{lang}</h2>
+                    <h2 className="font-bold font-sans ml-4 mt-4">
+                      <Link href={lang === "English" ? "/en" : "/"}>
+                        {lang}
+                      </Link>
+                    </h2>
                   </div>
                 </ScrollArea>
               </DrawerContent>

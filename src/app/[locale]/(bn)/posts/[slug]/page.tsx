@@ -10,7 +10,10 @@ import {
 } from "@/sanity/types";
 
 import Image from "next/image";
-import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
+import {
+  createImageUrlBuilder,
+  type SanityImageSource,
+} from "@sanity/image-url";
 import { client } from "@/sanity/client";
 
 import TOC from "@/components/TOC";
@@ -37,33 +40,44 @@ export async function generateMetadata({
   if (!data) {
     return { title: "Post Not Found" };
   }
-const { projectId, dataset } = client.config();
+  const { projectId, dataset } = client.config();
   const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? createImageUrlBuilder({ projectId, dataset }).image(source)
+    projectId && dataset
+      ? createImageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
+  const imageURL = data.mainImage
+    ? urlFor(data.mainImage)
+        ?.height(500)
+        .width(700)
+        .quality(80)
+        .auto("format")
+        .url()
     : null;
-  const imageURL = data.mainImage ? urlFor(data.mainImage)?.height(500).width(700).quality(80).auto("format").url() : null;
   return {
     title: data.title,
     description: data.description,
-    openGraph: imageURL ? {
-      title: data.title,
-      description: data.description,
-      images: [
-        {
-          url: imageURL,
-          width: 700,
-          height: 500,
-          alt: data.title,
-        },
-      ],
-    } : undefined,
-    twitter: imageURL ? {
-      card: "summary_large_image",
-      title: data.title,
-      description: data.description,
-      images: [imageURL],
-    } : undefined,
+    openGraph: imageURL
+      ? {
+          title: data.title,
+          description: data.description,
+          images: [
+            {
+              url: imageURL,
+              width: 700,
+              height: 500,
+              alt: data.title,
+            },
+          ],
+        }
+      : undefined,
+    twitter: imageURL
+      ? {
+          card: "summary_large_image",
+          title: data.title,
+          description: data.description,
+          images: [imageURL],
+        }
+      : undefined,
   };
 }
 
@@ -111,14 +125,18 @@ export default async function PostPage({
   }
 
   const { title, date, content, mainImage } = await post;
-const { projectId, dataset } = client.config();
+  const { projectId, dataset } = client.config();
   const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? createImageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+    projectId && dataset
+      ? createImageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
   const imageUrl = mainImage
-    ? (urlFor(mainImage)?.height(500).width(700).quality(80).auto("format").url() ??
-        "https://placehold.co/550x310/png")
+    ? (urlFor(mainImage)
+        ?.height(500)
+        .width(700)
+        .quality(80)
+        .auto("format")
+        .url() ?? "https://placehold.co/550x310/png")
     : "https://placehold.co/550x310/png";
 
   const { notes, seen } = extractEndnotes(content);
@@ -195,58 +213,56 @@ const { projectId, dataset } = client.config();
   };
 
   return (
-    <article className="font-serif fade-in">
+    <article className="font-serif fade-in w90 mx-auto">
       <Title title={title} headings={headings} />
 
-      <p className="w90 mx-auto text-sm mt-2">
+      <p className="text-sm mt-2">
         {new Date(date).toLocaleDateString("bn-in", {
           month: "long",
           year: "numeric",
         })}
       </p>
-      <hr className="mb-4 w90 mx-auto" />
-      <div className="w90 mx-auto">
-        <div className="flex">
-          <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
-            <figure className="mb-4">
-              <Image
-                src={imageUrl}
-                alt={title}
-                className="mx-auto overflow-hidden object-cover object-center "
-                height="500"
-                width="700"
-              />
+      <hr className="mb-4 " />
+      <div className="flex">
+        <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
+          <figure className="mb-4">
+            <Image
+              src={imageUrl}
+              alt={title}
+              className="mx-auto overflow-hidden object-cover object-center "
+              height="500"
+              width="700"
+            />
 
-              <figcaption className="text-gray-500 text-center text-sm mt-2">
-                {mainImage.caption}
-              </figcaption>
-            </figure>
+            <figcaption className="text-gray-500 text-center text-sm mt-2">
+              {mainImage.caption}
+            </figcaption>
+          </figure>
 
-            <PortableText value={content} components={components} />
-          </div>
-          {headings.length ? (
-            <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
-              <TOC headings={headings} />
-            </nav>
-          ) : (
-            ""
-          )}
+          <PortableText value={content} components={components} />
         </div>
-        {notes.length > 0 && (
-          <section className="mt-8 mb-10">
-            <h2 className="text-lg font-semibold">টীকা</h2>
-            {notes.map((note, i) => (
-              <ul key={note._key} id={`endnote-${i + 1}`}>
-                <a href={`#ref-${i + 1}`} className="underline text-gray-700">
-                  {i + 1}
-                </a>
-                {"  "}
-                {note.note}
-              </ul>
-            ))}
-          </section>
+        {headings.length ? (
+          <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
+            <TOC headings={headings} />
+          </nav>
+        ) : (
+          ""
         )}
       </div>
+      {notes.length > 0 && (
+        <section className="mt-8 mb-10">
+          <h2 className="text-lg font-semibold">টীকা</h2>
+          {notes.map((note, i) => (
+            <ul key={note._key} id={`endnote-${i + 1}`}>
+              <a href={`#ref-${i + 1}`} className="underline text-gray-700">
+                {i + 1}
+              </a>
+              {"  "}
+              {note.note}
+            </ul>
+          ))}
+        </section>
+      )}
     </article>
   );
 }

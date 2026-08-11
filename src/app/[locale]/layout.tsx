@@ -77,11 +77,13 @@ export default async function RootLayout({
           className={`${bengaliSans.variable} ${bengaliSerif.variable} antialiased`}
         >
           <NextIntlClientProvider messages={messages}>
-            <HeaderWrapper />
-            <ScrollToTop />
-            {children}
-            <ScrollToTopButton />
-            <Footer />
+            <div className="fade-in">
+              <HeaderWrapper />
+              <ScrollToTop />
+              {children}
+              <ScrollToTopButton />
+              <Footer />
+            </div>
           </NextIntlClientProvider>
           <SpeedInsights />
         </body>
