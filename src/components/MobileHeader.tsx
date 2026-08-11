@@ -117,8 +117,8 @@ const MobileHeader = ({
                   <div className="h-full">
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4">
-                        <h2 className="font-bold font-sans flex gap-2 items-center">
-                          <ChartBarStacked size={16} />
+                        <h2 className="font-bold text-lg font-sans flex gap-2 items-center">
+                          <ChartBarStacked size={20} />
                           {subject}
                         </h2>
                         <CollapsibleTrigger
@@ -151,8 +151,8 @@ const MobileHeader = ({
                     </Collapsible>
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4 mt-4">
-                        <h2 className="font-bold font-sans flex gap-2 items-center">
-                          <CalendarDays size={16} />
+                        <h2 className="font-bold text-lg font-sans flex gap-2 items-center">
+                          <CalendarDays size={20} />
                           {by_year}
                         </h2>
                         <CollapsibleTrigger
@@ -183,20 +183,20 @@ const MobileHeader = ({
                         ))}
                       </CollapsibleContent>
                     </Collapsible>
-                    <h2 className="font-bold font-sans ml-4 mt-4 flex gap-2 items-center">
-                      <FileText size={16} />
+                    <h2 className="font-bold text-lg font-sans ml-4 mt-4 flex gap-2 items-center">
+                      <FileText size={20} />
                       {pdf}
                     </h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4 flex gap-2 items-center">
-                      <Info size={16} />
+                    <h2 className="font-bold text-lg font-sans ml-4 mt-4 flex gap-2 items-center">
+                      <Info size={20} />
                       {about_us}
                     </h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4">
+                    <h2 className="font-bold text-lg font-sans ml-4 mt-4">
                       <Link
                         href={lang === "English" ? "/en" : "/"}
                         className="flex items-center gap-2"
                       >
-                        <Languages size={16} />
+                        <Languages size={20} />
                         {lang}
                       </Link>
                     </h2>
