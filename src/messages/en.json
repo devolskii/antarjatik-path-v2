@@ -7,6 +7,7 @@
     "lang": "বাংলা",
     "search": "Search in English...",
     "banner": "/en-banner.png",
-    "drawer": "/en-drawer.jpg"
+    "drawer": "/en-drawer.jpg",
+    "home": "/en/"
   }
 }

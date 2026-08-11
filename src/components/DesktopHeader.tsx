@@ -31,6 +31,7 @@ interface HeaderProps {
   about_us: string;
   lang: string;
   search: string;
+  home: string;
 }
 const DesktopHeader = ({
   tags,
@@ -42,12 +43,13 @@ const DesktopHeader = ({
   about_us,
   lang,
   search,
+  home,
 }: HeaderProps) => {
   return (
     <div className="">
       <div className="w-full mb-1">
         <div className="w90  mx-auto mb-1">
-          <Link href="/">
+          <Link href={home}>
             <Image
               src={src}
               alt="header"

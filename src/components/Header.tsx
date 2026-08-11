@@ -27,6 +27,7 @@ const Header = ({ tags, years }: HeaderProps) => {
           lang={t("lang")}
           search={t("search")}
           drawer={t("drawer")}
+          home={t("home")}
         />
       </div>
       <div className="hidden md:block">
@@ -40,6 +41,7 @@ const Header = ({ tags, years }: HeaderProps) => {
           about_us={t("about_us")}
           lang={t("lang")}
           search={t("search")}
+          home={t("home")}
         />
       </div>
     </header>

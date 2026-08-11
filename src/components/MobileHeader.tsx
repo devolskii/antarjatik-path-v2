@@ -36,6 +36,7 @@ interface HeaderProps {
   lang: string;
   search: string;
   drawer: string;
+  home: string;
 }
 
 const MobileHeader = ({
@@ -49,6 +50,7 @@ const MobileHeader = ({
   lang,
   search,
   drawer,
+  home,
 }: HeaderProps) => {
   console.log(drawer);
   const [open, setOpen] = useState(false);
@@ -81,8 +83,11 @@ const MobileHeader = ({
               <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none pb-4">
                 <DrawerHeader className="mb-8 pl-0 ml-0">
                   <div className="ml-0 pl-0.1 pr-0.1 flex rounded-none contain-content ">
-                    <Button className="bg-transparent rounded-none ml-0 h-full w-full">
-                      <Link href="/">
+                    <Button
+                      className="bg-transparent rounded-none ml-0 h-full w-full"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Link href={home}>
                         <Image
                           src={drawer}
                           alt="BLPI Logo Drawer"
@@ -180,8 +185,11 @@ const MobileHeader = ({
           </div>
         </div>
         <div className="w-[95%]">
-          <Button className="bg-transparent rounded-none ml-0 h-full w-full">
-            <Link href="/">
+          <Button
+            className="bg-transparent rounded-none ml-0 h-full w-full"
+            onClick={() => setOpen(false)}
+          >
+            <Link href={home}>
               <Image src={src} alt="BLPI Logo Header" width={430} height={56} />
             </Link>
           </Button>
