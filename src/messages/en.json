@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "subject": "Subject",
+    "by_year": "By Year",
+    "pdf": "Books/Journals PDF",
+    "about_us": "About Us",
+    "lang": "বাংলা",
+    "search": "Search in English...",
+    "banner": "/en-desktop-banner.png",
+    "mobile_banner": "bn-mobile-drawer.jpeg"
+  }
+}

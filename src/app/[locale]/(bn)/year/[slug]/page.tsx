@@ -48,10 +48,10 @@ export default async function YearPage({
   const { projectId, dataset } = client.config();
 
   return (
-    <>
+    <div className="fade-in w90 mx-auto">
       <Title title={name} />
       <hr className="mb-4" />
-      <div className="fade-in w90 mx-auto">
+      <div>
         {!posts ? (
           <h2>{name} বছরের কোনো লেখা নেই </h2>
         ) : (
@@ -75,6 +75,6 @@ export default async function YearPage({
           </ul>
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,36 +1,132 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./Navbar";
 
 import { Slug } from "@/sanity/types";
 
+import { ChartBarStacked, FileText, Info, Languages, Menu } from "lucide-react";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "./ui/menubar";
+import { Separator } from "./ui/separator";
+import SearchBar from "./SearchBar";
+
 type Tag = { _id: string; name: string; slug: Slug };
 type Year = { _id: string; name: string; slug: Slug };
-
 interface HeaderProps {
   tags: Tag[];
   years: Year[];
+  src: string;
+  subject: string;
+  by_year: string;
+  pdf: string;
+  about_us: string;
+  lang: string;
+  search: string;
 }
-
-const DesktopHeader = ({ tags, years }: HeaderProps) => {
+const DesktopHeader = ({
+  tags,
+  years,
+  src,
+  subject,
+  by_year,
+  pdf,
+  about_us,
+  lang,
+  search,
+}: HeaderProps) => {
   return (
     <div className="">
       <div className="w-full mb-1">
         <div className="w90  mx-auto mb-1">
           <Link href="/">
             <Image
-              src="/desktop-banner.png"
+              src={src}
               alt="header"
               width={3464}
               height={469}
+              loading="eager"
             />
           </Link>
         </div>
       </div>
       <div className="w-full py-1">
         <div className="hidden md:block">
-          <Navbar tags={tags} years={years} />
+          <div>
+            <Menubar className="w90 mx-auto bg-[#DB261D] rounded-none flex justify-evenly text-white">
+              <MenubarMenu>
+                <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black flex items-center gap-2 justify-center px-2">
+                  <ChartBarStacked size={16} />
+                  {subject}
+                </MenubarTrigger>
+                <MenubarContent className="rounded-none bg-[#DB261D] text-white">
+                  {tags.map((tag) => (
+                    <Link key={tag._id} href={`/tag/${tag.slug?.current}`}>
+                      <MenubarItem className="font-sans rounded-none">
+                        {tag.name}
+                      </MenubarItem>
+                    </Link>
+                  ))}
+                  <MenubarSeparator />
+                  <MenubarSub>
+                    <MenubarSubTrigger className="font-sans rounded-none">
+                      {by_year}
+                    </MenubarSubTrigger>
+                    <MenubarSubContent className="rounded-none bg-[#DB261D] text-white">
+                      {years.map((year) => (
+                        <MenubarItem key={year._id} className="rounded-none">
+                          <Link
+                            href={`/year/${year.slug.current}`}
+                            className="font-sans"
+                          >
+                            {year.name}
+                          </Link>
+                        </MenubarItem>
+                      ))}
+                    </MenubarSubContent>
+                  </MenubarSub>
+                </MenubarContent>
+              </MenubarMenu>
+              <Separator orientation="vertical" />
+              <MenubarMenu>
+                <MenubarTrigger className="rounded-none text-lg whitespace-nowrap hover:text-black aria-expanded:text-black px-3 flex items-center gap-2 justify-center">
+                  <FileText size={16} />
+                  {pdf}
+                </MenubarTrigger>
+              </MenubarMenu>
+              <Separator orientation="vertical" />
+              <MenubarMenu>
+                <SearchBar placeholder={search} />
+              </MenubarMenu>
+              <Separator orientation="vertical" />
+              <MenubarMenu>
+                <MenubarTrigger className="rounded-none text-lg whitespace-nowrap hover:text-black aria-expanded:text-black px-3 flex items-center gap-2 justify-center">
+                  <Info size={16} />
+                  {about_us}
+                </MenubarTrigger>
+              </MenubarMenu>
+              <Separator orientation="vertical" />
+              <MenubarMenu>
+                <MenubarTrigger className="rounded-none text-lg hover:text-black aria-expanded:text-black flex justify-center px-2">
+                  <Link
+                    href={lang === "English" ? "/en" : "/"}
+                    className="flex items-center gap-2 justify-center"
+                  >
+                    <Languages size={16} />
+                    {lang}
+                  </Link>
+                </MenubarTrigger>
+              </MenubarMenu>
+            </Menubar>
+          </div>
         </div>
       </div>
     </div>

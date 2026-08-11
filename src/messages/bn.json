@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "subject": "বিষয়",
+    "by_year": "বছর অনুযায়ী",
+    "pdf": "বই/পত্রিকা PDF",
+    "about_us": "আমাদের সম্পর্কে",
+    "lang": "English",
+    "search": "বাংলায় খুঁজুন...",
+    "banner": "/bn-desktop-banner.png",
+    "mobile_banner": "bn-mobile-drawer.jpeg"
+  }
+}

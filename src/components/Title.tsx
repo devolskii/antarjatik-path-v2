@@ -48,7 +48,7 @@ export default function Title({
         className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${
           sticky
             ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white xl:hidden"
-            : "h-auto w90 mx-auto bg-white text-[#DB261D]"
+            : "h-auto bg-white text-[#DB261D]"
         }`}
       >
         <Link
@@ -73,7 +73,7 @@ export default function Title({
           <h1
             className={`font-serif font-bold transition-all duration-300 ease-out ${
               sticky
-                ? "truncate text-sm"
+                ? "truncate text-sm p-none"
                 : "mt-2 pr-3 text-2xl md:text-3xl xl:text-4xl"
             }`}
           >

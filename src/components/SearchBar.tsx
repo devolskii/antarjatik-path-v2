@@ -8,9 +8,11 @@ import { useRouter } from "next/navigation";
 export default function SearchBar({
   mobile = false,
   onSearch,
+  placeholder,
 }: {
   mobile?: boolean;
   onSearch?: () => void;
+  placeholder: string;
 }) {
   const [query, setQuery] = useState("");
   const router = useRouter();
@@ -24,9 +26,9 @@ export default function SearchBar({
   };
 
   return (
-    <InputGroup className="shadow-none rounded-none max-h-full w-full border-none bg-white m-0">
+    <InputGroup className="shadow-none rounded-none max-h-full border-none bg-white m-0">
       <InputGroupInput
-        placeholder="বাংলায় খুঁজুন..."
+        placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyPress}

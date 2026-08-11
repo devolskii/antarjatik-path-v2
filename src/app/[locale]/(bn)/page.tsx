@@ -1,9 +1,9 @@
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import { CardType } from "@/sanity/types";
-import Hero from "../../components/Hero";
-import SectionTitle from "../../components/SectionTitle";
-import PostCard from "../../components/PostCard";
+import Hero from "../../../components/Hero";
+import SectionTitle from "../../../components/SectionTitle";
+import PostCard from "../../../components/PostCard";
 
 const HOME_QUERY = `*[
   _type == "post"

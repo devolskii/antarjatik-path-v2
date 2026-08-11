@@ -5,15 +5,13 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
-import { ChevronsUpDown, Menu, Languages } from "lucide-react";
+import { ChevronsUpDown, Menu } from "lucide-react";
 
 import { useState } from "react";
 import {
   Drawer,
   DrawerContent,
-  DrawerDescription,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "./ui/drawer";
 import {
@@ -30,9 +28,26 @@ type Year = { _id: string; name: string; slug: Slug };
 interface HeaderProps {
   tags: Tag[];
   years: Year[];
+  src: string;
+  subject: string;
+  by_year: string;
+  pdf: string;
+  about_us: string;
+  lang: string;
+  search: string;
 }
 
-const MobileHeader = ({ tags, years }: HeaderProps) => {
+const MobileHeader = ({
+  tags,
+  years,
+  src,
+  subject,
+  by_year,
+  pdf,
+  about_us,
+  lang,
+  search,
+}: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const iconButtonClass =
     "p-0 rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
@@ -62,15 +77,11 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
               />
               <DrawerContent className="bg-[#DB261D] text-white border-none font-serif rounded-none pb-4">
                 <DrawerHeader className="mb-8 pl-0 ml-0">
-                  <DrawerTitle className="sr-only">আন্তর্জাতিক পথ</DrawerTitle>
-                  <DrawerDescription className="sr-only">
-                    বলশেভিক লেনিনবাদী পার্টির মুখপত্র
-                  </DrawerDescription>
                   <div className="ml-0 pl-0.1 pr-0.1 flex rounded-none contain-content ">
                     <Button className="bg-transparent rounded-none ml-0 h-full w-full">
                       <Link href="/">
                         <Image
-                          src="/drawer_image.jpeg"
+                          src={src}
                           alt="BLPI Logo Drawer"
                           width={280}
                           height={75}
@@ -80,13 +91,17 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                   </div>
                 </DrawerHeader>
                 <div className="w-full pl-2 mb-4">
-                  <SearchBar mobile={true} onSearch={() => setOpen(false)} />
+                  <SearchBar
+                    mobile={true}
+                    onSearch={() => setOpen(false)}
+                    placeholder={search}
+                  />
                 </div>
                 <ScrollArea className="h-full w-full">
                   <div className="h-full">
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4">
-                        <h2 className="font-bold font-sans">বিষয়</h2>
+                        <h2 className="font-bold font-sans">{subject}</h2>
                         <CollapsibleTrigger
                           render={
                             <Button
@@ -117,7 +132,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                     </Collapsible>
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4 mt-4">
-                        <h2 className="font-bold font-sans">বছর অনুযায়ী</h2>
+                        <h2 className="font-bold font-sans">{by_year}</h2>
                         <CollapsibleTrigger
                           render={
                             <Button
@@ -146,13 +161,11 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                         ))}
                       </CollapsibleContent>
                     </Collapsible>
+                    <h2 className="font-bold font-sans ml-4 mt-4">{pdf}</h2>
                     <h2 className="font-bold font-sans ml-4 mt-4">
-                      বই/পত্রিকা PDF
+                      {about_us}
                     </h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4">
-                      আমাদের সম্পর্কে
-                    </h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4">English</h2>
+                    <h2 className="font-bold font-sans ml-4 mt-4">{lang}</h2>
                   </div>
                 </ScrollArea>
               </DrawerContent>
@@ -163,7 +176,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
           <Button className="bg-transparent rounded-none ml-0 h-full w-full">
             <Link href="/">
               <Image
-                src="/mobile-banner.png"
+                src="/bn-mobile-banner.png"
                 alt="BLPI Logo Header"
                 width={430}
                 height={56}
