@@ -5,7 +5,15 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
-import { ChevronsUpDown, Menu } from "lucide-react";
+import {
+  ChevronsUpDown,
+  Menu,
+  ChartBarStacked,
+  FileText,
+  Info,
+  Languages,
+  CalendarDays,
+} from "lucide-react";
 
 import { useState } from "react";
 import {
@@ -109,7 +117,10 @@ const MobileHeader = ({
                   <div className="h-full">
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4">
-                        <h2 className="font-bold font-sans">{subject}</h2>
+                        <h2 className="font-bold font-sans flex gap-2 items-center">
+                          <ChartBarStacked size={16} />
+                          {subject}
+                        </h2>
                         <CollapsibleTrigger
                           render={
                             <Button
@@ -140,7 +151,10 @@ const MobileHeader = ({
                     </Collapsible>
                     <Collapsible>
                       <div className="flex items-center justify-between gap-4 px-4 mt-4">
-                        <h2 className="font-bold font-sans">{by_year}</h2>
+                        <h2 className="font-bold font-sans flex gap-2 items-center">
+                          <CalendarDays size={16} />
+                          {by_year}
+                        </h2>
                         <CollapsibleTrigger
                           render={
                             <Button
@@ -169,12 +183,20 @@ const MobileHeader = ({
                         ))}
                       </CollapsibleContent>
                     </Collapsible>
-                    <h2 className="font-bold font-sans ml-4 mt-4">{pdf}</h2>
-                    <h2 className="font-bold font-sans ml-4 mt-4">
+                    <h2 className="font-bold font-sans ml-4 mt-4 flex gap-2 items-center">
+                      <FileText size={16} />
+                      {pdf}
+                    </h2>
+                    <h2 className="font-bold font-sans ml-4 mt-4 flex gap-2 items-center">
+                      <Info size={16} />
                       {about_us}
                     </h2>
                     <h2 className="font-bold font-sans ml-4 mt-4">
-                      <Link href={lang === "English" ? "/en" : "/"}>
+                      <Link
+                        href={lang === "English" ? "/en" : "/"}
+                        className="flex items-center gap-2"
+                      >
+                        <Languages size={16} />
                         {lang}
                       </Link>
                     </h2>

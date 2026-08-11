@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Slug } from "@/sanity/types";
 
-import { ChartBarStacked, FileText, Info, Languages, Menu } from "lucide-react";
+import { ChartBarStacked, FileText, Info, Languages } from "lucide-react";
 import {
   Menubar,
   MenubarContent,
