@@ -66,7 +66,7 @@ const MobileHeader = ({
     "p-0 rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
   return (
     <div>
-      <div className="h-13 w-full flex items-center justify-end py-2 px-3 bg-[#DB261D] gap-2">
+      <div className="h-15 w-full flex items-center justify-end pt-3 pb-2 pr-3 pl-4 bg-[#DB261D] gap-2">
         <div className="w-[5%]">
           <div>
             <Drawer
