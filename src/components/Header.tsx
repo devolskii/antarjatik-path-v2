@@ -19,13 +19,14 @@ const Header = ({ tags, years }: HeaderProps) => {
         <MobileHeader
           tags={tags}
           years={years}
-          src={t("mobile_banner")}
+          src={t("banner")}
           subject={t("subject")}
           by_year={t("by_year")}
           pdf={t("pdf")}
           about_us={t("about_us")}
           lang={t("lang")}
           search={t("search")}
+          drawer={t("drawer")}
         />
       </div>
       <div className="hidden md:block">

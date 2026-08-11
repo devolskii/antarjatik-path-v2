@@ -6,7 +6,7 @@
     "about_us": "আমাদের সম্পর্কে",
     "lang": "English",
     "search": "বাংলায় খুঁজুন...",
-    "banner": "/bn-desktop-banner.png",
-    "mobile_banner": "bn-mobile-drawer.jpeg"
+    "banner": "/bn-banner.png",
+    "drawer": "/bn-drawer.jpg"
   }
 }

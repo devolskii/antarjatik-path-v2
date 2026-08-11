@@ -35,6 +35,7 @@ interface HeaderProps {
   about_us: string;
   lang: string;
   search: string;
+  drawer: string;
 }
 
 const MobileHeader = ({
@@ -47,7 +48,9 @@ const MobileHeader = ({
   about_us,
   lang,
   search,
+  drawer,
 }: HeaderProps) => {
+  console.log(drawer);
   const [open, setOpen] = useState(false);
   const iconButtonClass =
     "p-0 rounded-none bg-transparent text-white hover:bg-transparent hover:text-white active:bg-transparent active:text-white focus-visible:bg-transparent focus-visible:text-white aria-expanded:bg-transparent aria-expanded:text-white";
@@ -81,7 +84,7 @@ const MobileHeader = ({
                     <Button className="bg-transparent rounded-none ml-0 h-full w-full">
                       <Link href="/">
                         <Image
-                          src={src}
+                          src={drawer}
                           alt="BLPI Logo Drawer"
                           width={280}
                           height={75}
@@ -179,12 +182,7 @@ const MobileHeader = ({
         <div className="w-[95%]">
           <Button className="bg-transparent rounded-none ml-0 h-full w-full">
             <Link href="/">
-              <Image
-                src="/bn-mobile-banner.png"
-                alt="BLPI Logo Header"
-                width={430}
-                height={56}
-              />
+              <Image src={src} alt="BLPI Logo Header" width={430} height={56} />
             </Link>
           </Button>
         </div>
