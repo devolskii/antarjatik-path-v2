@@ -45,10 +45,10 @@ export default function Title({
 
       <div
         id="sticky-header"
-        className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${
+        className={`w-full flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${
           sticky
-            ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white xl:hidden"
-            : "h-auto bg-white text-[#DB261D]"
+            ? "gap-x-3 px-2 h-10 bg-[#DB261D] text-white xl:hidden"
+            : "h-auto bg-white text-[#DB261D] w90 mx-auto"
         }`}
       >
         <Link

@@ -213,56 +213,57 @@ export default async function PostPage({
   };
 
   return (
-    <article className="font-serif fade-in w90 mx-auto">
+    <article className="font-serif fade-in">
       <Title title={title} headings={headings} />
+      <div className="w90 mx-auto">
+        <p className="text-sm mt-2">
+          {new Date(date).toLocaleDateString("bn-in", {
+            month: "long",
+            year: "numeric",
+          })}
+        </p>
+        <hr className="mb-4 " />
+        <div className="flex">
+          <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
+            <figure className="mb-4">
+              <Image
+                src={imageUrl}
+                alt={title}
+                className="mx-auto overflow-hidden object-cover object-center "
+                height="500"
+                width="700"
+              />
 
-      <p className="text-sm mt-2">
-        {new Date(date).toLocaleDateString("bn-in", {
-          month: "long",
-          year: "numeric",
-        })}
-      </p>
-      <hr className="mb-4 " />
-      <div className="flex">
-        <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
-          <figure className="mb-4">
-            <Image
-              src={imageUrl}
-              alt={title}
-              className="mx-auto overflow-hidden object-cover object-center "
-              height="500"
-              width="700"
-            />
+              <figcaption className="text-gray-500 text-center text-sm mt-2">
+                {mainImage.caption}
+              </figcaption>
+            </figure>
 
-            <figcaption className="text-gray-500 text-center text-sm mt-2">
-              {mainImage.caption}
-            </figcaption>
-          </figure>
-
-          <PortableText value={content} components={components} />
+            <PortableText value={content} components={components} />
+          </div>
+          {headings.length ? (
+            <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
+              <TOC headings={headings} />
+            </nav>
+          ) : (
+            ""
+          )}
         </div>
-        {headings.length ? (
-          <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
-            <TOC headings={headings} />
-          </nav>
-        ) : (
-          ""
+        {notes.length > 0 && (
+          <section className="mt-8 mb-10">
+            <h2 className="text-lg font-semibold">টীকা</h2>
+            {notes.map((note, i) => (
+              <ul key={note._key} id={`endnote-${i + 1}`}>
+                <a href={`#ref-${i + 1}`} className="underline text-gray-700">
+                  {i + 1}
+                </a>
+                {"  "}
+                {note.note}
+              </ul>
+            ))}
+          </section>
         )}
       </div>
-      {notes.length > 0 && (
-        <section className="mt-8 mb-10">
-          <h2 className="text-lg font-semibold">টীকা</h2>
-          {notes.map((note, i) => (
-            <ul key={note._key} id={`endnote-${i + 1}`}>
-              <a href={`#ref-${i + 1}`} className="underline text-gray-700">
-                {i + 1}
-              </a>
-              {"  "}
-              {note.note}
-            </ul>
-          ))}
-        </section>
-      )}
     </article>
   );
 }
